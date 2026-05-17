@@ -59,22 +59,24 @@ Open your browser and navigate to: **[http://localhost:8080](http://localhost:80
 
 ## 🧪 Testing and Verification
 
-### Force an Alert
+### How to verify that webhook alerts are being triggered
 To easily test the alerting mechanism:
 1. Open `.env` and set `TEMP_ALERT_THRESHOLD=15.0`.
 2. Restart the container: `docker-compose restart`.
-3. The alert will fire immediately on startup. Check your [webhook.site](https://webhook.site/) tab for the incoming POST request, and view the dashboard's "Recent Alerts" table.
+3. The alert will fire immediately on startup. Check your [webhook.site](https://webhook.site/) tab for the incoming POST request, and view the dashboard's "Recent Alerts" table to verify the webhook success status.
+
+![Webhook Received](docs/webhook.png)
+
+### How to verify that scheduled ingestion is actively running
+You can verify the scheduler is actively pulling data every 5 minutes by:
+- Looking at the "Last Fetch" and "System Status" cards on the dashboard.
+- Watching the container logs for ingestion events: `docker-compose logs -f`
+- Accessing the JSON health endpoint: `curl http://localhost:8080/health`
 
 ### Manual Pipeline Trigger
 Instead of waiting 5 minutes for the scheduler, you can manually force a data cycle:
 - Click the **"Trigger Pipeline Now"** button at the bottom of the web dashboard.
 - OR run: `curl -X POST http://localhost:8080/trigger-now`
-
-### System Health
-You can verify the scheduler and database are actively running by:
-- Looking at the "System Status" card on the dashboard.
-- Accessing the JSON health endpoint: `curl http://localhost:8080/health`
-- Watching the container logs: `docker-compose logs -f`
 
 ---
 
