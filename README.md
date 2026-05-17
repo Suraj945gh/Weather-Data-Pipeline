@@ -1,7 +1,7 @@
 # Event-Driven Weather Data Pipeline
 
 ![Dashboard Screenshot](docs/dashboard1.png)  
-![Dashboard Screenshot](docs/dashboard2.png)
+![Dashboard Screenshot](docs/dashboard2.png) 
 
 ## 📖 Problem Statement
 The objective is to build a lightweight, automated, event-driven data pipeline using entirely free and open-source tools. The system must automatically collect real-time public data, process it for specific conditions or anomalies, and trigger alerts when those conditions are met. It must be fully containerized, highly reliable, and easily verified by another engineering team.
